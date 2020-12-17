@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import d20 from 'd20';
 
 @Component({
   selector: 'app-roll',
@@ -8,171 +7,204 @@ import d20 from 'd20';
 })
 export class RollComponent implements OnInit {
   // @Input() dices:any;
-  dices= [
+  results = [];
+  diceKeeped= [];
+  initDices= [
     {
+      id: 1,
       1: {
         value: "main",
-        faveur: true
+        favor: true
       },
       2: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       3: {
         value: "hache",
-        faveur: true
+        favor: true
       },
       4:{
         value: "bouclier",
-        faveur: false
+        favor: false
       },
       5: {
         value: "casque",
-        faveur: false
+        favor: false
       },
       6: {
         value: "fleche",
-        faveur: false
+        favor: false
       }
     },
     {
+      id: 2,
       1: {
         value: "main",
-        faveur: false
+        favor: false
       },
       2: {
         value: "hache",
-        faveur: true
+        favor: true
       },
       3: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       4:{
         value: "bouclier",
-        faveur: true
+        favor: true
       },
       5: {
         value: "casque",
-        faveur: false
+        favor: false
       },
       6: {
         value: "fleche",
-        faveur: false
+        favor: false
       }
     },
     {
+      id: 3,
       1: {
         value: "main",
-        faveur: false
+        favor: false
       },
       2: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       3: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       4:{
         value: "bouclier",
-        faveur: false
+        favor: false
       },
       5: {
         value: "casque",
-        faveur: true
+        favor: true
       },
       6: {
         value: "fleche",
-        faveur: true
+        favor: true
       }
     },
     {
+      id: 4,
       1: {
         value: "main",
-        faveur: false
+        favor: false
       },
       2: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       3: {
         value: "hache",
-        faveur: true
+        favor: true
       },
       4:{
         value: "bouclier",
-        faveur: true
+        favor: true
       },
       5: {
         value: "casque",
-        faveur: false
+        favor: false
       },
       6: {
         value: "fleche",
-        faveur: false
+        favor: false
       }
     },
     {
+      id: 5,
       1: {
         value: "main",
-        faveur: true
+        favor: true
       },
       2: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       3: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       4:{
         value: "bouclier",
-        faveur: false
+        favor: false
       },
       5: {
         value: "casque",
-        faveur: false
+        favor: false
       },
       6: {
         value: "fleche",
-        faveur: true
+        favor: true
       }
     },
     {
+      id: 6,
       1: {
         value: "main",
-        faveur: false
+        favor: false
       },
       2: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       3: {
         value: "hache",
-        faveur: false
+        favor: false
       },
       4:{
         value: "bouclier",
-        faveur: true
+        favor: true
       },
       5: {
         value: "casque",
-        faveur: true
+        favor: true
       },
       6: {
         value: "fleche",
-        faveur: false
+        favor: false
       }
     }
   ]
 
+  dices = this.initDices;
 
   constructor() {}
 
-  ngOnInit() {
-      let rolling = d20.roll('1d6')
+  ngOnInit() {}
+
+  roll() {
+    for(let dice of this.dices) {
+      // random number
+      let rolling = Math.floor(Math.random() * 6) + 1;
       console.log(rolling)
+
+      // get corresponding face for every dice
+      var output = {
+        id: dice.id,
+        value: dice[rolling].value,
+        favor: dice[rolling].favor
+      }
+
+      // push all output in the results array
+      this.results.push(output)
+      console.log(output)
+    }
+    console.log(this.results)
   }
 
+
+  //get Dice keeped
+  //TODO remove from dices the keeped ones and roll with remaining dices.
+  keep(dice) {
+    this.diceKeeped.push(dice)
+    console.log(this.diceKeeped)
+  }
 }
