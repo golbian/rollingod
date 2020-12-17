@@ -1,9 +1,15 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Dice Fac
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content [fullscreen]="true">
+  Créer un dé
+  
+<ion-button (click)='diceCreation()' expand="block">Generate a Dice</ion-button>
+
+
 </ion-content>
