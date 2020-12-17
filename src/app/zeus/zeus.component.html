@@ -1,0 +1,15 @@
+<div class="god-info">
+  <div>
+    <h1>{{zeus.name}}</h1>
+  </div>
+  <div>
+    <h2>{{zeus.description}}</h2>
+  </div>
+  <div *ngFor="let element of zeus.powers">
+    <button (click)="damage(element)">
+      <h2>{{element}}</h2>
+    </button>
+  </div>
+</div>
+
+
