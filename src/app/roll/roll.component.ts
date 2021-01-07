@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-const dices = require("./dice.json")
+import dices from './dice';
 
 @Component({
   selector: 'app-roll',
