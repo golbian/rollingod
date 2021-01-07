@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import Dice from './dice.js'
 
 @Component({
   selector: 'app-roll',
@@ -9,6 +10,7 @@ export class RollComponent implements OnInit {
   // @Input() dices:any;
   results = [];
   diceKeeped= [];
+
   initDices= [
     {
       id: 1,
@@ -178,7 +180,12 @@ export class RollComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    for(const dice of this.initDices) {
+      var createdDice = new Dice(dice)
+      console.log(createdDice)
+    }
+  }
 
   roll() {
     for(let dice of this.dices) {

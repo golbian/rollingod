@@ -7,25 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab2Page implements OnInit {
   ouvrirCreation : boolean;
-  private _face: { [id: number]: [face: string, favor: boolean];} = {};
+  // private _face: { [id: number]: [face: string, favor: boolean];} = {};
 
-  public get face(): { [id: number]: [face: string, favor: boolean] } {
-    return this._face;
-  }
+  // public get face(): { [id: number]: [face: string, favor: boolean] } {
+  //   return this._face;
+  // }
 
-  public set face(value: { [id: number]: [face: string, favor: boolean] }) {
-    this._face = value;
-  }
+  // public set face(value: { [id: number]: [face: string, favor: boolean] }) {
+  //   this._face = value;
+  // }
 
-  private _dice: { [id: number]: [faces: []]; } = {};
+  // private _dice: { [id: number]: [faces: []]; } = {};
 
-  public get dice(): { [id: number]: [faces: []]; } {
-    return this._dice;
-  }
+  // public get dice(): { [id: number]: [faces: []]; } {
+  //   return this._dice;
+  // }
 
-  public set dice(value: { [id: number]: [faces: []]; }) {
-    this._dice = value;
-  }
+  // public set dice(value: { [id: number]: [faces: []]; }) {
+  //   this._dice = value;
+  // }
 
   constructor() {}
 
