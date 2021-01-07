@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
+import { AchilleComponent } from '../achille/achille.component'
 import {RollComponent} from '../roll/roll.component'
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
@@ -16,6 +17,6 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page, RollComponent]
+  declarations: [Tab1Page, AchilleComponent, RollComponent]
 })
 export class Tab1PageModule {}

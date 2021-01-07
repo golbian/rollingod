@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import dices from './dice';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+// import dices from './dice';
 
 @Component({
   selector: 'app-roll',
@@ -7,24 +7,23 @@ import dices from './dice';
   styleUrls: ['./roll.component.scss'],
 })
 export class RollComponent implements OnInit {
-  // @Input() dices:any;
+  @Input() dices:any;
+  @Output() resultEmitter = new EventEmitter();
   results = [];
   diceKeeped= [];
-  initDices= dices;
-
-  dices = this.initDices;
 
   constructor() {}
 
   ngOnInit() {
-      console.log(this.initDices)
+    // console.log(this.dices)
   }
 
   roll() {
+    console.log(this.dices)
+    this.results = [];
     for(let dice of this.dices) {
       // random number
       let rolling = Math.floor(Math.random() * 6) + 1;
-      console.log(rolling)
 
       // get corresponding face for every dice
       var output = {
@@ -35,9 +34,8 @@ export class RollComponent implements OnInit {
 
       // push all output in the results array
       this.results.push(output)
-      console.log(output)
     }
-    console.log(this.results)
+    this.resultEmitter.emit(this.results);
   }
 
 

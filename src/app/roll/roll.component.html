@@ -1,12 +1,1 @@
-
-<ion-button (click)="roll()">Roll the dice !!</ion-button>
-
-<div *ngFor="let result of results">
-  <div class="card" style="width: 10rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{result.value}}</h5>
-      <p class="card-text">{{result.favor}}</p>
-      <ion-button (click)="keep(result)">Keep this dice</ion-button>
-    </div>
-  </div>
-</div>
+<ion-button (click)="roll(dices)">Roll the dice !!</ion-button>
