@@ -8,8 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class ZeusComponent implements OnInit {
 
   ////////////////////////////////// VARIABLES //////////////////////////////////
-  
-
   zeus = {
     name : "Zeus",
     description : "Lance un terrible éclair directement sur l'adversaire",

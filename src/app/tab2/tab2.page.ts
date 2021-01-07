@@ -37,7 +37,7 @@ export class Tab2Page implements OnInit {
   // A boolean named favor is also used to know if de face provides a jeton
   diceCreation(index : number) {
     // Créer un Dé à 6 faces vides
-    this.dice = new { id = index, faces[] = new []};
+    //this.dice = new { id = index, faces[] = new []};
 
     // Créer une Liste de 6 chiffres : 1, 2, 3, 4, 5, 6
     var list = new Array();
