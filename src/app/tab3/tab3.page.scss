@@ -3,10 +3,11 @@
 }
 .achille-board{
     background-color: green !important;
+    transform: rotate(180deg);
 }
 .hercule-board{
     background-color: greenyellow !important;
 }
 .full-board{
-    height: calc(100% - 57px);
+    height: 100%;
 }
