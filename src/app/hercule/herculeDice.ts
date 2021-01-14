@@ -3,7 +3,7 @@ export default  [
       "id": 1,
       "1": {
         "value": "main",
-        "icon": "../../assets/icon/positivity.svg",
+        "icon": "../../assets/icon/positivity-gold.svg",
         "favor": true
       },
       "2": {
@@ -13,7 +13,7 @@ export default  [
       },
       "3": {
         "value": "hache",
-        "icon": "../../assets/icon/fist.svg",
+        "icon": "../../assets/icon/fist-gold.svg",
         "favor": true
       },
       "4":{
@@ -41,7 +41,7 @@ export default  [
       },
       "2": {
         "value": "hache",
-        "icon": "../../assets/icon/fist.svg",
+        "icon": "../../assets/icon/fist-gold.svg",
         "favor": true
       },
       "3": {
@@ -51,7 +51,7 @@ export default  [
       },
       "4":{
         "value": "bouclier",
-        "icon": "../../assets/icon/armor.svg",
+        "icon": "../../assets/icon/armor-gold.svg",
         "favor": true
       },
       "5": {
@@ -89,12 +89,12 @@ export default  [
       },
       "5": {
         "value": "casque",
-        "icon": "../../assets/icon/helmet.svg",
+        "icon": "../../assets/icon/helmet-gold.svg",
         "favor": true
       },
       "6": {
         "value": "fleche",
-        "icon": "../../assets/icon/rock.svg",
+        "icon": "../../assets/icon/rock-gold.svg",
         "favor": true
       }
     },
@@ -112,12 +112,12 @@ export default  [
       },
       "3": {
         "value": "hache",
-        "icon": "../../assets/icon/fist.svg",
+        "icon": "../../assets/icon/fist-gold.svg",
         "favor": true
       },
       "4":{
         "value": "bouclier",
-        "icon": "../../assets/icon/armor.svg",
+        "icon": "../../assets/icon/armor-gold.svg",
         "favor": true
       },
       "5": {
@@ -135,7 +135,7 @@ export default  [
       "id": 5,
       "1": {
         "value": "main",
-        "icon": "../../assets/icon/positivity.svg",
+        "icon": "../../assets/icon/positivity-gold.svg",
         "favor": true
       },
       "2": {
@@ -160,7 +160,7 @@ export default  [
       },
       "6": {
         "value": "fleche",
-        "icon": "../../assets/icon/rock.svg",
+        "icon": "../../assets/icon/rock-gold.svg",
         "favor": true
       }
     },
@@ -183,12 +183,12 @@ export default  [
       },
       "4":{
         "value": "bouclier",
-        "icon": "../../assets/icon/armor.svg",
+        "icon": "../../assets/icon/armor-gold.svg",
         "favor": true
       },
       "5": {
         "value": "casque",
-        "icon": "../../assets/icon/helmet.svg",
+        "icon": "../../assets/icon/helmet-gold.svg",
         "favor": true
       },
       "6": {
