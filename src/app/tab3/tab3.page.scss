@@ -2,12 +2,20 @@
     height: 50%;
 }
 .achille-board{
-    background-color: green !important;
     transform: rotate(180deg);
+    background-image: url("../../assets/achille.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
 }
-.hercule-board{
-    background-color: greenyellow !important;
+
+.hercule-board {
+    background-image: url("../../assets/hercule.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 85%;
 }
+
 .full-board{
     height: 100%;
 }
