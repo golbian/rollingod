@@ -1,13 +1,17 @@
 <div class="tapis">
-  <div class="dices">
-      <!-- import des dés gardés -->
-      blabla
-  </div>
+  <!-- keeped dices -->
   <div class="row dices">
-    <div *ngFor="let result of results" class="col">
+    <div *ngFor="let diceKeeped of dicesKeeped" class="col">
+        <img src={{diceKeeped.icon}} class="figure-img img-fluid rounded" alt="{{diceKeeped.value}}">
+    </div>
+  </div>
+  <!-- rolled dices -->
+  <div class="row dices">
+    <div *ngFor="let result of results" class="col" (click)="keep(result)" >
         <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">
     </div>
   </div>
+  <ion-button (click)="validate()" class="btn btn-info">Valider</ion-button>
   <app-roll class="roll-btn" (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
 </div>
   
