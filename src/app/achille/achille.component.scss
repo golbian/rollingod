@@ -1,4 +1,20 @@
 .tapis {
-    background-color: #B38441;
+    background-color: #6bdd6b;
     height: 100%;
+}
+
+.dices {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 2vh;
+}
+
+.figure-img{
+    height: 35px;
+    width: 35px;
+    padding: 5px;
+    margin-left: 1vh;
+    background-color: gray;
+    border: black solid 2px;
+    border-radius: 5px;
 }

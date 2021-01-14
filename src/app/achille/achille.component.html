@@ -1,9 +1,13 @@
 <div class="tapis">
-  <app-roll class="roll-btn" (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
-  <div *ngFor="let result of results">
-      <figure class="figure">
+  <div class="dices">
+      <!-- import des dés gardés -->
+      blabla
+  </div>
+  <div class="row dices">
+    <div *ngFor="let result of results" class="col">
         <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">
-      </figure>
     </div>
+  </div>
+  <app-roll class="roll-btn" (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
 </div>
   
