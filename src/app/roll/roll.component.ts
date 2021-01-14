@@ -29,7 +29,8 @@ export class RollComponent implements OnInit {
       var output = {
         id: dice.id,
         value: dice[rolling].value,
-        favor: dice[rolling].favor
+        favor: dice[rolling].favor,
+        icon: dice[rolling].icon
       }
 
       // push all output in the results array
