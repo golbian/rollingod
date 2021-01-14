@@ -8,6 +8,7 @@ import dices from './dice'
 })
 export class HerculeComponent implements OnInit {
   dices = dices
+  diceKeeped = []
   results = []
 
   constructor() {}
@@ -19,5 +20,14 @@ export class HerculeComponent implements OnInit {
   getResult(results) {
     console.log(results)
     this.results = results
+  }
+
+  
+
+  //get Dice keeped
+  //TODO remove from dices the keeped ones and roll with remaining dices.
+  keep(dice) {
+    this.diceKeeped.push(dice)
+    console.log(this.diceKeeped)
   }
 }
