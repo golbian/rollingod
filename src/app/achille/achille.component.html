@@ -1,6 +1,9 @@
-<app-roll (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
+<div class="tapis">
+  <app-roll class="roll-btn" (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
   <div *ngFor="let result of results">
-    <figure class="figure">
-      <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">
-    </figure>
-  </div>
+      <figure class="figure">
+        <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">
+      </figure>
+    </div>
+</div>
+  
