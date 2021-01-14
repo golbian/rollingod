@@ -1,4 +1,5 @@
 <app-roll (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
+<ion-button (click)="validate()" class="btn btn-info">Validez</ion-button>
   <div *ngFor="let result of results">
     <figure (click)="keep(result)" class="figure">
       <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">

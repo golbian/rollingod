@@ -8,8 +8,9 @@ import dices from './achilleDice'
 })
 export class AchilleComponent implements OnInit {
   dices = dices
-  diceKeeped = []
+  dicesKeeped = []
   results = []
+  pv:number = 15
 
   constructor() {}
 
@@ -21,14 +22,24 @@ export class AchilleComponent implements OnInit {
     this.results = results
   }
 
+  validate() {
+    for(let diceKeeped of this.dicesKeeped) {
+      var index = this.dices.findIndex(x => x.id === diceKeeped.id);
+      if(index !== -1 ) {
+        this.dices.splice(index, 1);
+      }
+      console.log(this.dices)
+    }
+  }
+
     //get Dice keeped
   //TODO remove from dices the keeped ones and roll with remaining dices.
   keep(dice) {
-    var index = this.diceKeeped.findIndex(x => x.id === dice.id)
+    var index = this.dicesKeeped.findIndex(x => x.id === dice.id)
     if(index === -1) {
-      this.diceKeeped.push(dice)
+      this.dicesKeeped.push(dice)
     } else {
-      this.diceKeeped.splice(index, 1);
+      this.dicesKeeped.splice(index, 1);
     }
   }
 }
