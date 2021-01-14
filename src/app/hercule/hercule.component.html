@@ -6,12 +6,12 @@
     </div>
   </div>
   <!-- rolled dices -->
-  <div class="row dices">
-    <div *ngFor="let result of results" class="col" (click)="keep(result)" >
+  <div *ngIf="rollState" class="row dices">
+    <div  *ngFor="let result of results" class="col" (click)="keep(result)" >
         <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">
     </div>
   </div>
-  <ion-button (click)="validate()" class="btn btn-info">Valider</ion-button>
-  <app-roll class="roll-btn" (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
+  <ion-button *ngIf="rollState" (click)="validate()" class="btn btn-info">Valider</ion-button>
+  <app-roll *ngIf="!rollState" class="roll-btn" (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
 </div>
   

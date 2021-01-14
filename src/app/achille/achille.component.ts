@@ -12,6 +12,7 @@ export class AchilleComponent implements OnInit {
   dicesStash = []
   results = []
   pv:number = 15
+  rollState = false
 
   constructor() {}
 
@@ -19,21 +20,22 @@ export class AchilleComponent implements OnInit {
   }
 
   getResult(results) {
+    this.rollState = true
     this.results = results
   }
 
   validate() {
+    this.rollState = false
+    for(let diceStash of this.dicesStash) {
+      this.dicesKeeped.push(diceStash)
+    }
     for(let diceKeeped of this.dicesKeeped) {
       var index = this.dices.findIndex(x => x.id === diceKeeped.id);
       if(index !== -1 ) {
         this.dices.splice(index, 1);
       }
-      console.log(this.dices)
     }
-
-    for(let diceStash of this.dicesStash) {
-      this.dicesKeeped.push(diceStash)
-    }
+    this.dicesStash = []
   }
 
   //get Dice keeped
@@ -47,4 +49,3 @@ export class AchilleComponent implements OnInit {
     }
   }
 }
-
