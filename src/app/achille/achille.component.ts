@@ -9,13 +9,13 @@ import dices from './achilleDice'
 export class AchilleComponent implements OnInit {
   dices = dices
   dicesKeeped = []
+  dicesStash = []
   results = []
   pv:number = 15
 
   constructor() {}
 
   ngOnInit() {
-
   }
 
   getResult(results) {
@@ -30,16 +30,21 @@ export class AchilleComponent implements OnInit {
       }
       console.log(this.dices)
     }
+
+    for(let diceStash of this.dicesStash) {
+      this.dicesKeeped.push(diceStash)
+    }
   }
 
-    //get Dice keeped
+  //get Dice keeped
   //TODO remove from dices the keeped ones and roll with remaining dices.
   keep(dice) {
-    var index = this.dicesKeeped.findIndex(x => x.id === dice.id)
+    var index = this.dicesStash.findIndex(x => x.id === dice.id)
     if(index === -1) {
-      this.dicesKeeped.push(dice)
+      this.dicesStash.push(dice)
     } else {
-      this.dicesKeeped.splice(index, 1);
+      this.dicesStash.splice(index, 1);
     }
   }
 }
+
