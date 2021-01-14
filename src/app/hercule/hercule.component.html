@@ -1,6 +1,6 @@
 <app-roll (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
   <div *ngFor="let result of results">
-    <figure class="figure">
+    <figure (click)="keep(result)" class="figure">
       <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">
     </figure>
   </div>
