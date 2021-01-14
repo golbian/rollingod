@@ -7,8 +7,8 @@
   </div>
   <!-- rolled dices -->
   <div *ngIf="rollState" class="row dices">
-    <div  *ngFor="let result of results" class="col" (click)="keep(result)" >
-        <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">
+    <div  *ngFor="let result of results" class="col" >
+        <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}" (click)="keep(result, $event)">
     </div>
   </div>
   <ion-button *ngIf="rollState" (click)="validate()" class="btn btn-info">Valider</ion-button>
