@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import dices from './dice'
+import dices from './herculeDice'
 
 @Component({
   selector: 'app-hercule',
