@@ -37,12 +37,4 @@ export class RollComponent implements OnInit {
     }
     this.resultEmitter.emit(this.results);
   }
-
-
-  //get Dice keeped
-  //TODO remove from dices the keeped ones and roll with remaining dices.
-  keep(dice) {
-    this.diceKeeped.push(dice)
-    console.log(this.diceKeeped)
-  }
 }
