@@ -18,14 +18,17 @@ export class AchilleComponent implements OnInit {
   }
 
   getResult(results) {
-    console.log(results)
     this.results = results
   }
 
     //get Dice keeped
   //TODO remove from dices the keeped ones and roll with remaining dices.
   keep(dice) {
-    this.diceKeeped.push(dice)
-    console.log(this.diceKeeped)
+    var index = this.diceKeeped.findIndex(x => x.id === dice.id)
+    if(index === -1) {
+      this.diceKeeped.push(dice)
+    } else {
+      this.diceKeeped.splice(index, 1);
+    }
   }
 }
