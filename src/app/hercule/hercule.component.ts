@@ -40,12 +40,15 @@ export class HerculeComponent implements OnInit {
 
   //get Dice keeped
   //TODO remove from dices the keeped ones and roll with remaining dices.
-  keep(dice) {
+  keep(dice, event) {
+    console.log(event.target);
     var index = this.dicesStash.findIndex(x => x.id === dice.id)
     if(index === -1) {
       this.dicesStash.push(dice)
+      event.target.classList.add("highlight");
     } else {
       this.dicesStash.splice(index, 1);
+      event.target.classList.remove("highlight");
     }
   }
 }
