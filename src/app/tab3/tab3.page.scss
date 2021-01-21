@@ -3,19 +3,26 @@
 }
 .achille-board{
     transform: rotate(180deg);
-    background-image: url("../../assets/achille.jpg");
+    /*background-image: url("../../assets/achille.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position-x: 50%;
+    background-position-x: 50%;*/
+    border-top: black solid 5px;
 }
 
 .hercule-board {
-    background-image: url("../../assets/hercule.jpg");
+    /*background-image: url("../../assets/hercule.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position-y: 85%;
+    background-position-y: 85%;*/
+    border-top: black solid 5px;
 }
 
 .full-board{
     height: 100%;
+    width: 100%;
+    background-image: url('../../assets/background-opaque70.png');
+    background-color: blanchedalmond;
+    background-size: cover;
+    background-repeat: no-repeat;
 }

@@ -7,7 +7,12 @@
   </div>
   <div *ngFor="let element of zeus.powers">
     <button (click)="damage(element)">
-      <h2>{{element}}</h2>
+      <h2>{{element.description}}</h2>
+    </button>
+  </div>
+  <div *ngFor="let element of zeus.powers" class="hide">
+    <button (click)="damage(element)">
+      <h2>{{element.description}}</h2>
     </button>
   </div>
 </div>
