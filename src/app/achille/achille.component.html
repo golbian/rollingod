@@ -7,7 +7,7 @@
   </div>
   <!-- rolled dices -->
   <div *ngIf="rollState" class="row dices">
-    <div  *ngFor="let result of results" class="col" (click)="keep(result)" >
+    <div  *ngFor="let result of results" class="col" (click)="keep(result, $event)" >
         <img src={{result.icon}} class="figure-img img-fluid rounded" alt="{{result.value}}">
     </div>
   </div>
