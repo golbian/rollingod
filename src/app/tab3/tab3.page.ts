@@ -51,6 +51,7 @@ export class Tab3Page {
       this.AchilleTurnCount += 1
     }
     this.HerculeState.current = true
+    this.AchilleState.current = false
   }
 
   getHerculeTurn(turnInfo) {
@@ -61,6 +62,7 @@ export class Tab3Page {
       this.HerculeTurnCount += 1
     }
     this.AchilleState.current = true
+    this.HerculeState.current = false
   }
 
   endTurn() {
