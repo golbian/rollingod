@@ -15,17 +15,17 @@ export class AchilleComponent implements OnInit {
   dicesStash = []
   results = []
   pv:number = 15
-  favor:number = 0
+  // favor:number = 0
   HeroInfo = {
     pv: this.pv,
-    favor: this.favor,
+    diceKeeped: this.dicesKeeped
   }
   rollState = false
 
   constructor() {}
 
   ngOnInit() {
-    this.AchilleInfoEmitter.emit(this.HeroInfo);
+    // this.AchilleInfoEmitter.emit(this.HeroInfo);
   }
 
   getResult(results) {
@@ -36,9 +36,6 @@ export class AchilleComponent implements OnInit {
   validate() {
     this.rollState = false
     for(let diceStash of this.dicesStash) {
-      if(diceStash.favor === true) {
-        this.HeroInfo.favor += 1
-      }
       this.dicesKeeped.push(diceStash)
     }
     for(let diceKeeped of this.dicesKeeped) {
@@ -49,11 +46,12 @@ export class AchilleComponent implements OnInit {
     }
     if(this.dices.length === 0) {
       this.AchilleState.endTurn = true
+      this.AchilleInfoEmitter.emit(this.HeroInfo);
+
     }
     this.dicesStash = []
     this.AchilleState.current = false;
     this.TurnAchilleInfoEmitter.emit(this.AchilleState);
-    this.AchilleInfoEmitter.emit(this.HeroInfo);
   }
 
   //get Dice keeped

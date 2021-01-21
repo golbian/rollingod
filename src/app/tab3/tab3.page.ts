@@ -32,8 +32,6 @@ export class Tab3Page {
     }
   }
 
-
-
   getAchilleInfo(HeroInfo) {
     this.AchilleInfo = HeroInfo
     console.log(HeroInfo)
@@ -47,19 +45,32 @@ export class Tab3Page {
   getAchilleTurn(turnInfo) {
     console.log(turnInfo)
     if(turnInfo.endTurn === true) {
-      // this.endTurn(this.AchilleInfo, this.HerculeInfo);
-    } 
+      this.AchilleTurnCount = 3
+      this.endTurn();
+    } else {
+      this.AchilleTurnCount += 1
+    }
+    this.HerculeState.current = true
   }
 
   getHerculeTurn(turnInfo) {
-    console.log(turnInfo)
     if(turnInfo.endTurn === true) {
-      // this.endTurn(this.AchilleInfo, this.HerculeInfo)
+      this.HerculeTurnCount = 3
+      this.endTurn()
+    } else {
+      this.HerculeTurnCount += 1
+    }
+    this.AchilleState.current = true
+  }
+
+  endTurn() {
+    if(this.HerculeTurnCount && this.AchilleTurnCount) {
+      this.IdoleChoice();
     }
   }
 
-  // endTurn(AchilleInfo, HerculeInfo) {
-  //   console.log(AchilleInfo, HerculeInfo)
-  // }
+  IdoleChoice() {
+    
+  }
 
 }
