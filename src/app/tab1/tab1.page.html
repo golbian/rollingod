@@ -7,11 +7,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Roll tab</ion-title>
     </ion-toolbar>
-  </ion-header>
-
-  <app-achille ></app-achille>
+  </ion-header> -->
+  <div class="full-board">
+    <div class="player-board achille-board">
+      <app-achille></app-achille>
+    </div>
+    <div class="player-board hercule-board">
+      <app-hercule></app-hercule>
+    </div>
+  </div>
 </ion-content>
