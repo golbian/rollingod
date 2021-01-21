@@ -17,6 +17,7 @@ export class Tab3Page {
   HerculeTurnCount:number = 0
   AchilleTurnCount:number = 0
 
+  StartPlayer:boolean = true;
   AchilleInfo:object
   HerculeInfo:object
 
@@ -26,8 +27,10 @@ export class Tab3Page {
   ngOnInit() {
     var coinflip = Math.floor(Math.random() * 2) + 1;
     if(coinflip == 1) {
+      this.StartPlayer = true
       this.HerculeState.current = true
     } else {
+      this.StartPlayer = false
       this.AchilleState.current = true
     }
   }
@@ -43,7 +46,6 @@ export class Tab3Page {
   }
 
   getAchilleTurn(turnInfo) {
-    console.log(turnInfo)
     if(turnInfo.endTurn === true) {
       this.AchilleTurnCount = 3
       this.endTurn();
@@ -67,8 +69,53 @@ export class Tab3Page {
 
   endTurn() {
     if(this.HerculeTurnCount && this.AchilleTurnCount) {
+      this.StartPlayer = !this.StartPlayer
+      if(this.StartPlayer) {
+        this.ProcessDamage(this.AchilleInfo, this.HerculeInfo);
+      } else {
+        this.ProcessDamage(this.HerculeInfo, this.AchilleInfo);
+      }
+      
       this.IdoleChoice();
     }
+  }
+
+  ProcessDamage(Player1Info, Player2Info) {
+    var Player1 = {
+      favor: 0,
+      hache: 0,
+      bouclier: 0,
+      main: 0,
+      fleche: 0,
+      casque: 0,
+    }
+
+    var Player2 = {
+      favor: 0,
+      hache: 0,
+      bouclier: 0,
+      main: 0,
+      fleche: 0,
+      casque: 0,
+    }
+
+    for(const dice of Player1Info.diceKeeped) {
+      if(dice.favor === true) {
+        Player1.favor += 1
+      }
+      Player1[dice.value] += 1
+    }
+
+    for(const dice of Player2Info.diceKeeped) {
+      if(dice.favor === true) {
+        Player2.favor += 1
+      }
+      Player2[dice.value] += 1
+    }
+
+    console.log(Player1)
+    console.log(Player2)
+
   }
 
   IdoleChoice() {
