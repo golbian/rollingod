@@ -39,7 +39,7 @@ export class ZeusComponent implements OnInit {
   ////////////////////////////////// FONCTIONS //////////////////////////////////
 
 
-
+  //todo une fois implémenté dans le component principal
 
 
   constructor() { }

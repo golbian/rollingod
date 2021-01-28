@@ -49,7 +49,7 @@ export class AchilleComponent implements OnInit {
     /**
    * 
    * Augustin
-   * Récupération des dés lancé
+   * Récupération des dés lancés
    */
   getResult(results) {
     this.rollState = true
@@ -58,7 +58,7 @@ export class AchilleComponent implements OnInit {
 
   /**
    * Florian
-   * Validation du tour , dés gardés et envoie des donnés au turn order
+   * Validation du tour, dés gardés et envoie des données au turn order
    */
   //
   validate() {
@@ -90,7 +90,7 @@ export class AchilleComponent implements OnInit {
 
   /**
    * Alexandre
-   * Récuperation des dés garders sur un lancé
+   * Récuperation des dés gardés sur un lancé
    */
   keep(dice, event) {
     console.log(event.target);
