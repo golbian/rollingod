@@ -13,6 +13,7 @@ export class HerculeComponent implements OnInit {
   @Input() HerculeState:any;
   @Input() NewTurn:boolean;
   @Input() HerculePv:number;
+  @Input() HerculeFavor:number;
   // @Input() NewTurn:boolean;
   dices;
   dicesKeeped = []
@@ -62,6 +63,7 @@ export class HerculeComponent implements OnInit {
       this.HerculeState.endTurn = true
       var HeroInfo = {
         pv: this.HerculePv,
+        favor: this.HerculeFavor,
         diceKeeped: this.dicesKeeped
       }
       this.HerculeInfoEmitter.emit(HeroInfo);

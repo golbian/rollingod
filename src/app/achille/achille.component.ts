@@ -13,6 +13,7 @@ export class AchilleComponent implements OnInit {
   @Input() AchilleState:any;
   @Input() NewTurn:boolean;
   @Input() AchillePv:number;
+  @Input() AchilleFavor:number;
   dices;
   dicesKeeped = []
   dicesStash = []
@@ -62,6 +63,7 @@ export class AchilleComponent implements OnInit {
     if(this.dices.length === 0) {
       var HeroInfo = {
         pv: this.AchillePv,
+        favor: this.AchilleFavor,
         diceKeeped: this.dicesKeeped
       }
       this.AchilleState.endTurn = true

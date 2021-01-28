@@ -22,6 +22,8 @@ export class Tab3Page {
   HerculeInfo:object
   HerculePv:number = 15;
   AchillePv:number = 15;
+  HerculeFavor: number = 0;
+  AchilleFavor:number = 0;
   NewTurn:boolean = false;
 
   constructor() {
@@ -42,11 +44,13 @@ export class Tab3Page {
 
   getAchilleInfo(HeroInfo) {
     this.AchilleInfo = HeroInfo
+    this.AchilleFavor = HeroInfo.favor
     console.log(HeroInfo)
   }
 
   getHerculeInfo(HeroInfo) {
     this.HerculeInfo = HeroInfo
+    this.HerculeFavor = HeroInfo.favor
     console.log(HeroInfo)
   }
 
@@ -90,7 +94,7 @@ export class Tab3Page {
   ProcessDamage(Player1Info, Player2Info) {
     var Player1 = {
       pv: Player1Info.pv,
-      favor: 0,
+      favor: Player1Info.favor,
       hache: 0,
       bouclier: 0,
       main: 0,
@@ -100,7 +104,7 @@ export class Tab3Page {
 
     var Player2 = {
       pv: Player2Info.pv,
-      favor: 0,
+      favor: Player2Info.favor,
       hache: 0,
       bouclier: 0,
       main: 0,
@@ -148,10 +152,14 @@ export class Tab3Page {
 
     if(this.StartPlayer === "Achille") {
       this.AchillePv = Player1.pv
+      this.AchilleFavor = Player1.favor
       this.HerculePv = Player2.pv
+      this.HerculeFavor = Player2.favor
     } else {
       this.HerculePv = Player1.pv
+      this.HerculeFavor = Player1.favor
       this.AchillePv = Player2.pv
+      this.AchilleFavor = Player2.favor
     }
 
     this.NewTurn = true;
