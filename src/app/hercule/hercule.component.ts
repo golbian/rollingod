@@ -9,7 +9,7 @@ import dices from './herculeDice'
 export class HerculeComponent implements OnInit {
   @Output() HerculeInfoEmitter = new EventEmitter();
   @Output() TurnHerculeInfoEmitter = new EventEmitter();
-  @Input() HerculeCurrent:any;
+  @Input() HerculeCurrent:boolean;
   @Input() NewTurn:boolean;
   @Input() HerculePv:number;
   @Input() HerculeFavor:number;

@@ -6,17 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  // HerculeState = {
-  //   current: false,
-  //   endTurn: false,
-  // };
-  // AchilleState = {
-  //   current: false,
-  //   endTurn: false,
-  // }
 
-  AchilleCurrent = false;
-  HerculeCurrent = false;
+  AchilleCurrent:boolean = false;
+  HerculeCurrent:boolean = false;
 
   HerculeTurnCount:number = 0
   AchilleTurnCount:number = 0
@@ -63,10 +55,14 @@ export class Tab3Page {
     if(endTurn === true) {
       this.AchilleTurnCount = 3
       this.endTurn();
+      this.AchilleCurrent = false
     } else {
       this.AchilleTurnCount += 1
     }
-    this.HerculeCurrent = true
+
+    if(this.HerculeTurnCount !== 3) {
+      this.HerculeCurrent = true
+    } 
     this.AchilleCurrent = false
     console.log("Achille state: " + this.AchilleCurrent)
     console.log("Hercule state: " + this.HerculeCurrent)
@@ -77,10 +73,14 @@ export class Tab3Page {
     if(endTurn === true) {
       this.HerculeTurnCount = 3
       this.endTurn()
+      this.HerculeCurrent = true
     } else {
       this.HerculeTurnCount += 1
     }
-    this.AchilleCurrent = true
+
+    if(this.AchilleTurnCount !== 3) {
+      this.AchilleCurrent = true
+    }
     this.HerculeCurrent = false
     console.log("Achille state: " + this.AchilleCurrent)
     console.log("Hercule state: " + this.HerculeCurrent)
@@ -167,11 +167,17 @@ export class Tab3Page {
       this.AchilleFavor = Player1.favor
       this.HerculePv = Player2.pv
       this.HerculeFavor = Player2.favor
+      this.AchilleCurrent = false;
+      this.HerculeCurrent = true;
+      this.StartPlayer = "Hercule"
     } else {
       this.HerculePv = Player1.pv
       this.HerculeFavor = Player1.favor
       this.AchillePv = Player2.pv
       this.AchilleFavor = Player2.favor
+      this.AchilleCurrent = true;
+      this.HerculeCurrent = false;
+      this.StartPlayer = "Achille"
     }
 
     this.NewTurn = true;

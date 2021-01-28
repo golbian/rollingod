@@ -9,7 +9,7 @@ import dices from './achilleDice'
 export class AchilleComponent implements OnInit {
   @Output() AchilleInfoEmitter = new EventEmitter();
   @Output() TurnAchilleInfoEmitter = new EventEmitter();
-  @Input() AchilleCurrent:any;
+  @Input() AchilleCurrent:boolean;
   @Input() NewTurn:boolean;
   @Input() AchillePv:number;
   @Input() AchilleFavor:number;

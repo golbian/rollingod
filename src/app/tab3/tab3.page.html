@@ -15,17 +15,10 @@
 
   <div class="full-board">
     <div class="player-board achille-board">
-<<<<<<< HEAD
-      <app-achille (AchilleInfoEmitter)='getAchilleInfo($event)' (TurnAchilleInfoEmitter)='getAchilleTurn($event)' [AchilleState]= "AchilleState" [AchillePv]= "AchillePv" [AchilleFavor]= "AchilleFavor" [NewTurn]= "NewTurn"></app-achille>
-    </div>
-    <div class="player-board hercule-board">
-      <app-hercule (HerculeInfoEmitter)='getHerculeInfo($event)' (TurnHerculeInfoEmitter)='getHerculeTurn($event)' [HerculeState]= "HerculeState" [HerculePv]= "HerculePv" [HerculeFavor]= "HerculeFavor" [NewTurn]= "NewTurn"></app-hercule>
-=======
       <app-achille (AchilleInfoEmitter)='getAchilleInfo($event)' (TurnAchilleInfoEmitter)='getAchilleTurn($event)' [AchilleCurrent]= "AchilleCurrent" [AchillePv]= "AchillePv" [NewTurn]= "NewTurn"></app-achille>
     </div>
     <div class="player-board hercule-board">
       <app-hercule (HerculeInfoEmitter)='getHerculeInfo($event)' (TurnHerculeInfoEmitter)='getHerculeTurn($event)' [HerculeCurrent]= "HerculeCurrent" [HerculePv]= "HerculePv" [NewTurn]= "NewTurn"></app-hercule>
->>>>>>> 9f5f9fafc776cb8a6d36c5031921aefa825d23b3
     </div>
   </div>
   
