@@ -9,7 +9,7 @@ import dices from './herculeDice'
 export class HerculeComponent implements OnInit {
   @Output() HerculeInfoEmitter = new EventEmitter();
   @Output() TurnHerculeInfoEmitter = new EventEmitter();
-  @Input() HerculeCurrent:any;
+  @Input() HerculeCurrent:boolean;
   @Input() NewTurn:boolean;
   @Input() HerculePv:number;
   @Input() HerculeFavor:number;
@@ -24,12 +24,19 @@ export class HerculeComponent implements OnInit {
   rollState = false
 
   constructor() {}
-
+  /**
+   * Florian
+   * Initation des dés pour l'envoi au roll component
+   */
   ngOnInit() {
     var clone = JSON.parse(JSON.stringify(dices));
     this.dices = clone
   }
 
+  /**
+   * Augustin
+   * Nouveau tour, reset des dés
+   */
   reset() {
     console.log("ext")
     if(this.NewTurn) {
@@ -41,11 +48,21 @@ export class HerculeComponent implements OnInit {
     }
   }
 
+  /**
+   * 
+   * Augustin
+   * Récupération des dés lancé
+   */
   getResult(results) {
     this.rollState = true
     this.results = results
   }
 
+  /**
+   * Florian
+   * Validation du tour , dés gardés et envoie des donnés au turn order
+   */
+  //
   validate() {
     this.rollState = false
     this.reset();
@@ -72,8 +89,10 @@ export class HerculeComponent implements OnInit {
     this.TurnHerculeInfoEmitter.emit(this.endTurn);
   }
 
-  //get Dice keeped
-  //TODO remove from dices the keeped ones and roll with remaining dices.
+  /**
+   * Alexandre
+   * Récuperation des dés garders sur un lancé
+   */
   keep(dice, event) {
     console.log(event.target);
     var index = this.dicesStash.findIndex(x => x.id === dice.id)

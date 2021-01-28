@@ -9,7 +9,7 @@ import dices from './achilleDice'
 export class AchilleComponent implements OnInit {
   @Output() AchilleInfoEmitter = new EventEmitter();
   @Output() TurnAchilleInfoEmitter = new EventEmitter();
-  @Input() AchilleCurrent:any;
+  @Input() AchilleCurrent:boolean;
   @Input() NewTurn:boolean;
   @Input() AchillePv:number;
   @Input() AchilleFavor:number;
@@ -22,22 +22,19 @@ export class AchilleComponent implements OnInit {
 
   constructor() {}
 
+  /**
+   * Florian
+   * Initation des dés pour l'envoi au roll component
+   */
   ngOnInit() {
     var clone = JSON.parse(JSON.stringify(dices));
     this.dices = clone
   }
 
-  /*ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
-    this.current = changes.AchilleState.currentValue.current;
-    console.log("Achille state: " + this.AchilleState.current)
-  }*/
-
-  // currentState() {
-  //   this.current = this.AchilleState.current;
-
-  // }
-
+   /**
+   * Augustin
+   * Nouveau tour, reset des dés
+   */
   reset() {
     console.log("ext")
     if(this.NewTurn) {
@@ -49,12 +46,21 @@ export class AchilleComponent implements OnInit {
     }
   }
 
-
+    /**
+   * 
+   * Augustin
+   * Récupération des dés lancé
+   */
   getResult(results) {
     this.rollState = true
     this.results = results
   }
 
+  /**
+   * Florian
+   * Validation du tour , dés gardés et envoie des donnés au turn order
+   */
+  //
   validate() {
     this.rollState = false
     this.reset();
@@ -82,8 +88,10 @@ export class AchilleComponent implements OnInit {
     this.TurnAchilleInfoEmitter.emit(this.endTurn);
   }
 
-  //get Dice keeped
-  //TODO remove from dices the keeped ones and roll with remaining dices.
+  /**
+   * Alexandre
+   * Récuperation des dés garders sur un lancé
+   */
   keep(dice, event) {
     console.log(event.target);
     var index = this.dicesStash.findIndex(x => x.id === dice.id)
