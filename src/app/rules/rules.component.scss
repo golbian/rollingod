@@ -11,10 +11,23 @@
 }
 
 .regles{
-    background-color: rgba(241, 222, 222, 0.822);
+    // background-color: rgba(241, 222, 222, 0.822);
     padding-bottom: 2em;
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
+    position: absolute;
+    top: 13em;
+    text-align: center;
+    font-weight: 600;
+}
+
+.reglesPage1{
+    font-size: 14px;
+}
+
+.reglesPage2{
+    top: 15em !important;
+    font-size: 13px;
 }
 
 .largeurPage{
