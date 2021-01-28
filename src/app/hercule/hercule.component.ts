@@ -9,12 +9,12 @@ import dices from './herculeDice'
 export class HerculeComponent implements OnInit {
   @Output() HerculeInfoEmitter = new EventEmitter();
   @Output() TurnHerculeInfoEmitter = new EventEmitter();
-  // @Output() ResetEmitter = new EventEmitter();
-  @Input() HerculeState:any;
+  @Input() HerculeCurrent:any;
   @Input() NewTurn:boolean;
   @Input() HerculePv:number;
   @Input() HerculeFavor:number;
-  // @Input() NewTurn:boolean;
+  endTurn = false;
+  current = false;
   dices;
   dicesKeeped = []
   dicesStash = []
@@ -29,7 +29,6 @@ export class HerculeComponent implements OnInit {
     var clone = JSON.parse(JSON.stringify(dices));
     this.dices = clone
   }
-
 
   reset() {
     console.log("ext")
@@ -60,7 +59,7 @@ export class HerculeComponent implements OnInit {
       }
     }
     if(this.dices.length === 0) {
-      this.HerculeState.endTurn = true
+      this.endTurn = true
       var HeroInfo = {
         pv: this.HerculePv,
         favor: this.HerculeFavor,
@@ -70,8 +69,7 @@ export class HerculeComponent implements OnInit {
       this.dicesKeeped = []
     }
     this.dicesStash = []
-    this.HerculeState.current = false;
-    this.TurnHerculeInfoEmitter.emit(this.HerculeState);
+    this.TurnHerculeInfoEmitter.emit(this.endTurn);
   }
 
   //get Dice keeped

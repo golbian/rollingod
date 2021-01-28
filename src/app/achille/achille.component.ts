@@ -9,17 +9,15 @@ import dices from './achilleDice'
 export class AchilleComponent implements OnInit {
   @Output() AchilleInfoEmitter = new EventEmitter();
   @Output() TurnAchilleInfoEmitter = new EventEmitter();
-  // @Output() ResetEmitter = new EventEmitter();
-  @Input() AchilleState:any;
+  @Input() AchilleCurrent:any;
   @Input() NewTurn:boolean;
   @Input() AchillePv:number;
   @Input() AchilleFavor:number;
+  endTurn = false;
   dices;
   dicesKeeped = []
   dicesStash = []
   results = []
-  // pv:number = 15
-  // favor:number = 0
   rollState = false
 
   constructor() {}
@@ -29,6 +27,16 @@ export class AchilleComponent implements OnInit {
     this.dices = clone
   }
 
+  /*ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+    this.current = changes.AchilleState.currentValue.current;
+    console.log("Achille state: " + this.AchilleState.current)
+  }*/
+
+  // currentState() {
+  //   this.current = this.AchilleState.current;
+
+  // }
 
   reset() {
     console.log("ext")
@@ -66,13 +74,12 @@ export class AchilleComponent implements OnInit {
         favor: this.AchilleFavor,
         diceKeeped: this.dicesKeeped
       }
-      this.AchilleState.endTurn = true
+      this.endTurn = true;
       this.AchilleInfoEmitter.emit(HeroInfo);
       this.dicesKeeped = []
     }
     this.dicesStash = []
-    this.AchilleState.current = false;
-    this.TurnAchilleInfoEmitter.emit(this.AchilleState);
+    this.TurnAchilleInfoEmitter.emit(this.endTurn);
   }
 
   //get Dice keeped
