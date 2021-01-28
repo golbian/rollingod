@@ -6,14 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  HerculeState = {
-    current: false,
-    endTurn: false,
-  };
-  AchilleState = {
-    current: false,
-    endTurn: false,
-  }
+  // HerculeState = {
+  //   current: false,
+  //   endTurn: false,
+  // };
+  // AchilleState = {
+  //   current: false,
+  //   endTurn: false,
+  // }
+
+  AchilleCurrent = false;
+  HerculeCurrent = false;
+
   HerculeTurnCount:number = 0
   AchilleTurnCount:number = 0
 
@@ -31,11 +35,11 @@ export class Tab3Page {
     var coinflip = Math.floor(Math.random() * 2) + 1;
     if(coinflip == 1) {
       this.StartPlayer = "Hercule"
-      this.HerculeState.current = true
+      this.HerculeCurrent = true
       console.log("Hercule")
     } else {
       this.StartPlayer = "Achille"
-      this.AchilleState.current = true
+      this.AchilleCurrent = true
       console.log("Achille")
     }
   }
@@ -50,26 +54,32 @@ export class Tab3Page {
     console.log(HeroInfo)
   }
 
-  getAchilleTurn(turnInfo) {
-    if(turnInfo.endTurn === true) {
+  getAchilleTurn(endTurn) {
+    console.log("turn info: " + endTurn)
+    if(endTurn === true) {
       this.AchilleTurnCount = 3
       this.endTurn();
     } else {
       this.AchilleTurnCount += 1
     }
-    this.HerculeState.current = true
-    this.AchilleState.current = false
+    this.HerculeCurrent = true
+    this.AchilleCurrent = false
+    console.log("Achille state: " + this.AchilleCurrent)
+    console.log("Hercule state: " + this.HerculeCurrent)
   }
 
-  getHerculeTurn(turnInfo) {
-    if(turnInfo.endTurn === true) {
+  getHerculeTurn(endTurn) {
+    console.log("turn info: " + endTurn)
+    if(endTurn === true) {
       this.HerculeTurnCount = 3
       this.endTurn()
     } else {
       this.HerculeTurnCount += 1
     }
-    this.AchilleState.current = true
-    this.HerculeState.current = false
+    this.AchilleCurrent = true
+    this.HerculeCurrent = false
+    console.log("Achille state: " + this.AchilleCurrent)
+    console.log("Hercule state: " + this.HerculeCurrent)
   }
 
   endTurn() {
@@ -82,8 +92,10 @@ export class Tab3Page {
         this.StartPlayer = "Achille"
       }
       this.IdoleChoice();
-      this.HerculeTurnCount = 0
-      this.AchilleTurnCount = 0
+      this.HerculeTurnCount = 0;
+      console.log(this.HerculeTurnCount);
+      this.AchilleTurnCount = 0;
+      console.log(this.AchilleTurnCount);
     }
   }
 
@@ -169,7 +181,7 @@ export class Tab3Page {
   }
 
   IdoleChoice() {
-    
+    console.log("idol choice");
   }
 
 }
