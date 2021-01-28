@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, SimpleChanges } from '@angular/core';
 import dices from './herculeDice'
 
 @Component({
@@ -9,23 +9,36 @@ import dices from './herculeDice'
 export class HerculeComponent implements OnInit {
   @Output() HerculeInfoEmitter = new EventEmitter();
   @Output() TurnHerculeInfoEmitter = new EventEmitter();
+  // @Output() ResetEmitter = new EventEmitter();
   @Input() HerculeState:any;
-  dices = dices
+  @Input() NewTurn:boolean;
+  @Input() HerculePv:number;
+  // @Input() NewTurn:boolean;
+  dices;
   dicesKeeped = []
   dicesStash = []
   results = []
-  pv:number = 15
+  // pv:number = 15
   // favor:number = 0
-  HeroInfo = {
-    pv: this.pv,
-    diceKeeped: this.dicesKeeped
-  }
   rollState = false
 
   constructor() {}
 
   ngOnInit() {
-    // this.HerculeInfoEmitter.emit(this.HeroInfo);
+    var clone = JSON.parse(JSON.stringify(dices));
+    this.dices = clone
+  }
+
+
+  reset() {
+    console.log("ext")
+    if(this.NewTurn) {
+      console.log("int")
+      var clone = JSON.parse(JSON.stringify(dices));
+      this.dices = clone
+      // this.dicesKeeped = []
+      // this.ResetEmitter.emit(this.NewTurn)
+    }
   }
 
   getResult(results) {
@@ -35,6 +48,7 @@ export class HerculeComponent implements OnInit {
 
   validate() {
     this.rollState = false
+    this.reset();
     for(let diceStash of this.dicesStash) {
       this.dicesKeeped.push(diceStash)
     }
@@ -46,7 +60,12 @@ export class HerculeComponent implements OnInit {
     }
     if(this.dices.length === 0) {
       this.HerculeState.endTurn = true
-      this.HerculeInfoEmitter.emit(this.HeroInfo);
+      var HeroInfo = {
+        pv: this.HerculePv,
+        diceKeeped: this.dicesKeeped
+      }
+      this.HerculeInfoEmitter.emit(HeroInfo);
+      this.dicesKeeped = []
     }
     this.dicesStash = []
     this.HerculeState.current = false;

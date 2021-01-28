@@ -8,18 +8,21 @@ import { Component } from '@angular/core';
 export class Tab3Page {
   HerculeState = {
     current: false,
-    endTurn: false
+    endTurn: false,
   };
   AchilleState = {
     current: false,
-    endTurn: false
+    endTurn: false,
   }
   HerculeTurnCount:number = 0
   AchilleTurnCount:number = 0
 
-  StartPlayer:boolean = true;
+  StartPlayer:string = "";
   AchilleInfo:object
   HerculeInfo:object
+  HerculePv:number = 15;
+  AchillePv:number = 15;
+  NewTurn:boolean = false;
 
   constructor() {
   }
@@ -27,11 +30,13 @@ export class Tab3Page {
   ngOnInit() {
     var coinflip = Math.floor(Math.random() * 2) + 1;
     if(coinflip == 1) {
-      this.StartPlayer = true
+      this.StartPlayer = "Hercule"
       this.HerculeState.current = true
+      console.log("Hercule")
     } else {
-      this.StartPlayer = false
+      this.StartPlayer = "Achille"
       this.AchilleState.current = true
+      console.log("Achille")
     }
   }
 
@@ -68,20 +73,23 @@ export class Tab3Page {
   }
 
   endTurn() {
-    if(this.HerculeTurnCount && this.AchilleTurnCount) {
-      this.StartPlayer = !this.StartPlayer
-      if(this.StartPlayer) {
+    if(this.HerculeTurnCount === 3 && this.AchilleTurnCount === 3) {
+      if(this.StartPlayer === "Achille") {
         this.ProcessDamage(this.AchilleInfo, this.HerculeInfo);
+        this.StartPlayer = "Hercule"
       } else {
         this.ProcessDamage(this.HerculeInfo, this.AchilleInfo);
+        this.StartPlayer = "Achille"
       }
-      
       this.IdoleChoice();
+      this.HerculeTurnCount = 0
+      this.AchilleTurnCount = 0
     }
   }
 
   ProcessDamage(Player1Info, Player2Info) {
     var Player1 = {
+      pv: Player1Info.pv,
       favor: 0,
       hache: 0,
       bouclier: 0,
@@ -91,6 +99,7 @@ export class Tab3Page {
     }
 
     var Player2 = {
+      pv: Player2Info.pv,
       favor: 0,
       hache: 0,
       bouclier: 0,
@@ -113,9 +122,50 @@ export class Tab3Page {
       Player2[dice.value] += 1
     }
 
-    console.log(Player1)
-    console.log(Player2)
 
+    
+    Player2.pv += this.verifyDamage(Player2.bouclier,Player1.hache)
+    Player1.pv += this.verifyDamage(Player1.bouclier,Player2.hache)
+    Player2.pv += this.verifyDamage(Player2.casque,Player1.fleche)
+    Player1.pv += this.verifyDamage(Player1.casque,Player2.fleche)
+    var test = Math.sign(Player2.favor - Player1.main);
+    if( test !== -1) {
+      Player2.favor -= Player2.favor - Player1.main
+      Player1.favor + Player1.main
+    } else {
+      Player1.favor += Player2.favor
+      Player2.favor = 0
+    }
+
+    var test = Math.sign(Player1.favor - Player2.main);
+    if( test !== -1) {
+      Player1.favor -= Player1.favor - Player2.main
+      Player2.favor + Player2.main
+    } else {
+      Player2.favor += Player1.favor
+      Player1.favor = 0
+    }
+
+    if(this.StartPlayer === "Achille") {
+      this.AchillePv = Player1.pv
+      this.HerculePv = Player2.pv
+    } else {
+      this.HerculePv = Player1.pv
+      this.AchillePv = Player2.pv
+    }
+
+    this.NewTurn = true;
+    console.log(Player1, "player1")
+    console.log(Player2, "player2")
+  }
+
+  verifyDamage(nombre1 , nombre2) {
+    var test = Math.sign(nombre1 - nombre2)
+    if(test == -1) {
+      return nombre1 - nombre2
+    } else {
+      return 0
+    }
   }
 
   IdoleChoice() {

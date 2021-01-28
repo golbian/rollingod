@@ -13,5 +13,6 @@
   </div>
   <ion-button *ngIf="rollState" (click)="validate()" class="btn btn-info">Valider</ion-button>
   <app-roll *ngIf="!rollState" class="roll-btn" (resultEmitter)='getResult($event)' [dices]= "dices"></app-roll>
+  <div>{{AchillePv}}</div>
 </div>
   

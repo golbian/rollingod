@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, SimpleChanges } from '@angular/core';
 import dices from './achilleDice'
 
 @Component({
@@ -9,24 +9,37 @@ import dices from './achilleDice'
 export class AchilleComponent implements OnInit {
   @Output() AchilleInfoEmitter = new EventEmitter();
   @Output() TurnAchilleInfoEmitter = new EventEmitter();
+  // @Output() ResetEmitter = new EventEmitter();
   @Input() AchilleState:any;
-  dices = dices
+  @Input() NewTurn:boolean;
+  @Input() AchillePv:number;
+  dices;
   dicesKeeped = []
   dicesStash = []
   results = []
-  pv:number = 15
+  // pv:number = 15
   // favor:number = 0
-  HeroInfo = {
-    pv: this.pv,
-    diceKeeped: this.dicesKeeped
-  }
   rollState = false
 
   constructor() {}
 
   ngOnInit() {
-    // this.AchilleInfoEmitter.emit(this.HeroInfo);
+    var clone = JSON.parse(JSON.stringify(dices));
+    this.dices = clone
   }
+
+
+  reset() {
+    console.log("ext")
+    if(this.NewTurn) {
+      console.log("int")
+      var clone = JSON.parse(JSON.stringify(dices));
+      this.dices = clone
+      // this.dicesKeeped = []
+      // this.ResetEmitter.emit(this.NewTurn)
+    }
+  }
+
 
   getResult(results) {
     this.rollState = true
@@ -35,6 +48,8 @@ export class AchilleComponent implements OnInit {
 
   validate() {
     this.rollState = false
+    this.reset();
+
     for(let diceStash of this.dicesStash) {
       this.dicesKeeped.push(diceStash)
     }
@@ -45,9 +60,13 @@ export class AchilleComponent implements OnInit {
       }
     }
     if(this.dices.length === 0) {
+      var HeroInfo = {
+        pv: this.AchillePv,
+        diceKeeped: this.dicesKeeped
+      }
       this.AchilleState.endTurn = true
-      this.AchilleInfoEmitter.emit(this.HeroInfo);
-
+      this.AchilleInfoEmitter.emit(HeroInfo);
+      this.dicesKeeped = []
     }
     this.dicesStash = []
     this.AchilleState.current = false;
