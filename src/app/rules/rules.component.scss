@@ -12,8 +12,29 @@
 
 .regles{
     background-color: rgba(241, 222, 222, 0.822);
+    padding-bottom: 2em;
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
 }
 
 .largeurPage{
     width:100%;
+}
+
+.figure-img{
+    height: 35px;
+    width: 35px;
+    padding: 5px;
+    margin-left: 1vh;
+    background-color: gray;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+
+.highlight {
+    box-shadow: 
+    1px 1px 5px  #7EA0E0, 
+    -1px -1px 7px  #925FE0, 
+    1px -1px 5px #7EA0E0, 
+    -1px 1px 6px  #925FE0, 
 }
