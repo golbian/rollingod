@@ -17,7 +17,7 @@ export class RollComponent implements OnInit {
   ngOnInit() {
     // console.log(this.dices)
   }
-
+  //Florian
   roll() {
     console.log(this.dices)
     this.results = [];
