@@ -25,6 +25,10 @@ export class Tab3Page {
   constructor() {
   }
 
+  /**
+   * Augustin
+   * Initie le turn order
+   */
   ngOnInit() {
     var coinflip = Math.floor(Math.random() * 2) + 1;
     if(coinflip == 1) {
@@ -38,18 +42,32 @@ export class Tab3Page {
     }
   }
 
+
+  /**
+   * Florian
+   * Récupération des dés lancé et des faveurs actuelles
+   */
   getAchilleInfo(HeroInfo) {
     this.AchilleInfo = HeroInfo
     this.AchilleFavor = HeroInfo.favor
     console.log(HeroInfo)
   }
 
+  /**
+   * Florian
+   * Récupération des dés lancé et des faveurs actuelles
+   */
   getHerculeInfo(HeroInfo) {
     this.HerculeInfo = HeroInfo
     this.HerculeFavor = HeroInfo.favor
     console.log(HeroInfo)
   }
 
+
+   /**
+   * Alexandre
+   * Récupération de la variable de fin de tour et vérifie si le joueur à joué tout ses dés assigne le tour à l'autre joueur
+   */
   getAchilleTurn(endTurn) {
     console.log("turn info: " + endTurn)
     if(endTurn === true) {
@@ -68,6 +86,10 @@ export class Tab3Page {
     console.log("Hercule state: " + this.HerculeCurrent)
   }
 
+  /**
+   * Alexandre
+   * Récupération de la variable de fin de tour et vérifie si le joueur à joué tout ses dés assigne le tour à l'autre joueur
+   */
   getHerculeTurn(endTurn) {
     console.log("turn info: " + endTurn)
     if(endTurn === true) {
@@ -86,6 +108,10 @@ export class Tab3Page {
     console.log("Hercule state: " + this.HerculeCurrent)
   }
 
+  //Alexandre
+  /**
+   * Check si le tour est fini, et fais le calcul des dégats
+   */
   endTurn() {
     if(this.HerculeTurnCount === 3 && this.AchilleTurnCount === 3) {
       if(this.StartPlayer === "Achille") {
@@ -103,6 +129,10 @@ export class Tab3Page {
     }
   }
 
+  /**
+   * Florian && théorie Augustin
+   * Calcul des dégats
+   */
   ProcessDamage(Player1Info, Player2Info) {
     var Player1 = {
       pv: Player1Info.pv,
@@ -124,6 +154,10 @@ export class Tab3Page {
       casque: 0,
     }
 
+    /**
+     * Ajoute les faveurs correspondantes au lancé de dés
+     */
+
     for(const dice of Player1Info.diceKeeped) {
       if(dice.favor === true) {
         Player1.favor += 1
@@ -139,6 +173,9 @@ export class Tab3Page {
     }
 
 
+    /**
+     * calculs des dégats et faveur (volé)
+     */
     
     Player2.pv += this.verifyDamage(Player2.bouclier,Player1.hache)
     Player1.pv += this.verifyDamage(Player1.bouclier,Player2.hache)
@@ -162,6 +199,9 @@ export class Tab3Page {
       Player1.favor = 0
     }
 
+    /**
+     * application dégats faveur, et changements de tour
+     */
     if(this.StartPlayer === "Achille") {
       this.AchillePv = Player1.pv
       this.AchilleFavor = Player1.favor
@@ -185,7 +225,11 @@ export class Tab3Page {
     console.log(Player2, "player2")
   }
 
-  verifyDamage(nombre1 , nombre2) {
+  /**
+   * Augustin
+   * Verification des dégats pour éviter les valeurs positives = heal
+   */
+  verifyDamage(nombre1 , nombre2):number {
     var test = Math.sign(nombre1 - nombre2)
     if(test == -1) {
       return nombre1 - nombre2
@@ -194,6 +238,7 @@ export class Tab3Page {
     }
   }
 
+  //TODO
   IdoleChoice() {
     console.log("idol choice");
   }
